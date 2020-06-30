@@ -11,7 +11,7 @@
     <groupId>pl.hubertlakomski</groupId>
     <artifactId>pass-it-on</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>charity</name>
+    <name>pass-it-on</name>
 
     <properties>
         <java.version>1.8</java.version>

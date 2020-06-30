@@ -1,4 +1,4 @@
-package pl.hubertlakomski;
+package pl.hubertlakomski.passiton;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

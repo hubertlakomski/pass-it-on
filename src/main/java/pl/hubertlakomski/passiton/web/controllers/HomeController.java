@@ -1,4 +1,4 @@
-package pl.hubertlakomski;
+package pl.hubertlakomski.passiton.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

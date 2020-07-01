@@ -3,7 +3,9 @@ package pl.hubertlakomski.passiton.service.donation.add;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.hubertlakomski.passiton.domain.models.Category;
+import pl.hubertlakomski.passiton.domain.models.Institution;
 import pl.hubertlakomski.passiton.domain.repositories.CategoryRepository;
+import pl.hubertlakomski.passiton.domain.repositories.InstitutionRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public class DefaultDonationAddService implements DonationAddService{
 
     private final CategoryRepository categoryRepository;
+    private final InstitutionRepository institutionRepository;
 
     @Override
     public List<CategoryListDonationAddData> getListOfCategories() {
@@ -25,6 +28,25 @@ public class DefaultDonationAddService implements DonationAddService{
 
             data.setName(category.getName());
             data.setId(category.getId());
+
+            dataList.add(data);
+        }
+
+        return dataList;
+    }
+
+    @Override
+    public List<InstitutionListDonationAddData> getListOfInstitutions() {
+
+        List<InstitutionListDonationAddData> dataList = new ArrayList<>();
+
+        for(Institution institution: institutionRepository.findAll()){
+
+            InstitutionListDonationAddData data = new InstitutionListDonationAddData();
+
+            data.setId(institution.getId());
+            data.setName(institution.getName());
+            data.setDescription(institution.getDescription());
 
             dataList.add(data);
         }

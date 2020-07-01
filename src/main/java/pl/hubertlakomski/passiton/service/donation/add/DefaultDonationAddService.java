@@ -24,6 +24,7 @@ public class DefaultDonationAddService implements DonationAddService{
             CategoryListDonationAddData data = new CategoryListDonationAddData();
 
             data.setName(category.getName());
+            data.setId(category.getId());
 
             dataList.add(data);
         }

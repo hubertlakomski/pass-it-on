@@ -1,4 +1,4 @@
-package pl.hubertlakomski.passiton.service.home.institution.list;
+package pl.hubertlakomski.passiton.service.home;
 
 import lombok.Data;
 

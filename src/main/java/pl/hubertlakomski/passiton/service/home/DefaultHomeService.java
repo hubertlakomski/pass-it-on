@@ -1,4 +1,4 @@
-package pl.hubertlakomski.passiton.service.home.institution.list;
+package pl.hubertlakomski.passiton.service.home;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,12 +10,12 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class DefaultInstitutionListHomeService implements InstitutionListHomeService {
+public class DefaultHomeService implements HomeService {
 
     private final InstitutionRepository institutionRepository;
 
     @Override
-    public List<InstitutionListHomeData> getList() {
+    public List<InstitutionListHomeData> getListOfFoundations() {
 
         List<InstitutionListHomeData> dataList = new ArrayList<>();
 

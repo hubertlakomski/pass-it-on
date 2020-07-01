@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,7 +15,7 @@ import java.util.List;
 @Table(name="donations") @Getter @Setter
 public class Donation extends ParentEntity{
 
-    @Size(min=1, max=10)
+    @Size(min=1)
     private Integer quantity; //number of bags
 
     @ManyToMany
@@ -32,18 +31,22 @@ public class Donation extends ParentEntity{
     @NotBlank
     @Column(nullable = false)
     private String street;
+
     @NotBlank
     @Column(nullable = false)
     private String city;
+
     @NotBlank
     @Column(nullable = false)
     private String zipCode;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "pick_up_date")
     private LocalDate pickUpDate;
-    @Column(nullable = false)
+
+    @Column(nullable = false, name = "pick_up_time")
     private LocalTime pickUpTime;
 
+    @Column(name = "pick_up_comment")
     private String pickUpComment;
 
 }

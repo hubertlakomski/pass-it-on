@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface HomeService {
 
-    List<InstitutionListHomeData> getListOfFoundations();
+    List<InstitutionListHomeData> getListOfInstitutions();
 
 }

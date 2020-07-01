@@ -15,7 +15,7 @@ public class HomeController {
     @RequestMapping("/")
     public String homeAction(Model model){
 
-        model.addAttribute("institutions", homeService.getListOfFoundations());
+        model.addAttribute("institutions", homeService.getListOfInstitutions());
 
         return "index";
     }

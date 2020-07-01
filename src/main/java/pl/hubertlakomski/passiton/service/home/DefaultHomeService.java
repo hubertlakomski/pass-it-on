@@ -15,7 +15,7 @@ public class DefaultHomeService implements HomeService {
     private final InstitutionRepository institutionRepository;
 
     @Override
-    public List<InstitutionListHomeData> getListOfFoundations() {
+    public List<InstitutionListHomeData> getListOfInstitutions() {
 
         List<InstitutionListHomeData> dataList = new ArrayList<>();
 

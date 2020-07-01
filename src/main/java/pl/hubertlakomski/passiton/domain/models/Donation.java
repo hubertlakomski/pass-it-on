@@ -25,7 +25,6 @@ public class Donation extends ParentEntity{
 
     @ManyToOne
     @JoinColumn(name="institution_id")
-    @Column(nullable = false)
     private Institution institution;
 
     @NotBlank

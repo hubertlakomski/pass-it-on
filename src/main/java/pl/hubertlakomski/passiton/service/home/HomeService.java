@@ -5,5 +5,7 @@ import java.util.List;
 public interface HomeService {
 
     List<InstitutionListHomeData> getListOfInstitutions();
+    Integer getNumberOfReturnedBags();
+    Integer getNumberOfDonations();
 
 }

@@ -2,6 +2,7 @@ package pl.hubertlakomski.passiton.domain.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -40,6 +41,7 @@ public class Donation extends ParentEntity{
     private String zipCode;
 
     @Column(nullable = false, name = "pick_up_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
     @Column(nullable = false, name = "pick_up_time")

@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -16,7 +17,7 @@ import java.util.List;
 @Table(name="donations") @Getter @Setter
 public class Donation extends ParentEntity{
 
-    @Size(min=1)
+    @Min(1)
     private Integer quantity; //number of bags
 
     @ManyToMany

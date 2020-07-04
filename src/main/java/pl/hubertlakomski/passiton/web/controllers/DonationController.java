@@ -35,7 +35,7 @@ public class DonationController {
 
         donationService.saveDonation(data);
 
-        return "home";
+        return "form-confirmation";
     }
 
 }

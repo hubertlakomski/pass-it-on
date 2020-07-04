@@ -8,12 +8,22 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
+    <title>Dokument</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style.css"/>"/>
 
-    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
+<header class="header--main-page">
+    <jsp:include page="/WEB-INF/views/header.jsp"/>
+    <div class="slogan container container--90">
+        <div class="slogan--item">
+            <h1>
+                Zacznij pomagać!<br/>
+                Oddaj niechciane rzeczy w zaufane ręce
+            </h1>
+        </div>
+    </div>
+</header>
 
 <section class="stats">
     <div class="container container--85">
@@ -94,7 +104,7 @@
                         <div class="subtitle">Cel i misja: ${institution.description}</div>
                     </div>
 
-                <c:if test="${status.index%2!=0}"></li></c:if>
+                <c:if test="${status.index%2!=0 || status.last}"></li></c:if>
 
             </c:forEach>
 
@@ -104,7 +114,5 @@
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
-
-<script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>

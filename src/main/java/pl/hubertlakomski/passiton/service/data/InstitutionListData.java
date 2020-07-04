@@ -1,9 +1,9 @@
-package pl.hubertlakomski.passiton.service.donation.add;
+package pl.hubertlakomski.passiton.service.data;
 
 import lombok.Data;
 
 @Data
-public class InstitutionListDonationAddData {
+public class InstitutionListData {
 
     private Long id;
     private String name;

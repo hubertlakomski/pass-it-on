@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.hubertlakomski.passiton.service.donation.DonationData;
 import pl.hubertlakomski.passiton.service.donation.DonationService;
 
 import javax.validation.Valid;
 
-@Controller("/donation")
+@Controller
+@RequestMapping("/donation")
 @RequiredArgsConstructor
 public class DonationController {
 

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link type="text/css" href="<c:url value="/resources/css/style.css"/>" />
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
 <header class="header--form-page">
@@ -17,7 +17,7 @@
 
     <div class="slogan container container--90">
         <h2>
-            Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
+            Dziękujemy za przesłanie formularza.<br/> Na maila prześlemy wszelkie
             informacje o odbiorze.
         </h2>
     </div>

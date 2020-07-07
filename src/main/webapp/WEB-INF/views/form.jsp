@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link type="text/css" href="<c:url value="/resources/css/style.css"/>" />
+    <link rel="stylesheet"  type="text/css" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
 <header class="header--form-page">
@@ -74,11 +75,11 @@
                 <c:forEach items="${categories}" var="category">
 
                     <div class="form-group form-group--checkbox">
-
+                        <label class="category">
                         <input name="categoriesIds" type="checkbox" value="${category.id}"/>
                         <span class="checkbox"></span>
                         <span class="description">${category.name}</span>
-
+                    </label>
                     </div>
 
                 </c:forEach>
@@ -95,7 +96,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="quantity" step="1" min="1" />
+                        <input id="bagsNumber" type="number" name="quantity" step="1" min="1" />
                     </label>
                 </div>
 
@@ -114,7 +115,7 @@
                 <c:forEach items="${institutions}" var="institution">
 
                     <div class="form-group form-group--checkbox">
-                        <label>
+                        <label class="institution">
                             <input type="radio" name="institutionId" value="${institution.id}" />
                             <span class="checkbox radio"></span>
                             <span class="description">
@@ -140,16 +141,16 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="street" /> </label>
+                            <label> Ulica <input id="street" type="text" name="street" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="city" /> </label>
+                            <label> Miasto <input type="text" id="city" name="city" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="zipCode" />
+                                Kod pocztowy <input id="zipCode" type="text" name="zipCode" />
                             </label>
                         </div>
                     </div>
@@ -157,17 +158,17 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="pickUpDate" /> </label>
+                            <label > Data <input id="pickUpDate" type="date" name="pickUpDate" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="pickUpTime" /> </label>
+                            <label > Godzina <input id="pickUpTime" type="time" name="pickUpTime" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="pickUpComment" rows="5"></textarea>
+                                <textarea id="pickUpComment" name="pickUpComment" rows="5"></textarea>
                             </label>
                         </div>
                     </div>
@@ -188,12 +189,12 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
+                                <span id="bagsInfo" class="summary--text"></span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
+                                <span id="institutionInfo" class="summary--text"></span>
                             </li>
                         </ul>
                     </div>
@@ -202,19 +203,18 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li id="streetInfo"></li>
+                                <li id="cityInfo"></li>
+                                <li id="zipCodeInfo"></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li id="pickUpDateInfo">13/12/2018</li>
+                                <li id="pickUpTimeInfo">15:40</li>
+                                <li id="pickUpCommentInfo">Brak uwag</li>
                             </ul>
                         </div>
                     </div>
@@ -225,11 +225,12 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
+            <sec:csrfInput/>
         </form>
     </div>
 </section>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
-<script type="javascript" src="<c:url value="/resources/js/app.js"/>"></script>
+<script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>

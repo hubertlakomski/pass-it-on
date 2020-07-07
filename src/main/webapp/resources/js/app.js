@@ -147,6 +147,85 @@ document.addEventListener("DOMContentLoaded", function() {
      * Update form front-end
      * Show next or previous section etc.
      */
+
+    bagsInfo(){
+
+      const categories = this.$form.getElementsByClassName("category");
+      let bagsCategories = "";
+
+      if(categories.length>0){
+        for(var i = 0; i < categories.length; i++) {
+
+          if (categories[i].querySelector("input").checked == true) {
+
+            console.log(i);
+            if(i==0){
+              bagsCategories = categories[i].querySelector(".description").innerHTML;
+            }
+            else{
+              bagsCategories = bagsCategories + ", " + categories[i].querySelector(".description").innerHTML;
+            }
+
+          }
+
+        }
+      }
+
+      const bagsInfo = this.$form.querySelector("#bagsInfo");
+      const bagsNumber = this.$form.querySelector("#bagsNumber").value;
+
+      //tak wiem, że te końcówki ek, ki, ów nie są do końca poprawne :)
+
+      if(bagsNumber>0){
+        if(bagsNumber==1){
+          bagsInfo.innerText = bagsNumber + " worek z kategorii: "+bagsCategories;
+        }
+        else if(bagsNumber<5){
+          bagsInfo.innerText = bagsNumber + " worki z kategorii: "+bagsCategories;
+        }
+        else{
+          bagsInfo.innerText = bagsNumber + " worków z kategorii: "+bagsCategories;
+        }
+      }
+
+    }
+
+    institutionInfo(){
+      const institutionInfo = this.$form.querySelector("#institutionInfo");
+      const institution = this.$form.getElementsByClassName("institution");
+
+      if(institution.length>0){
+        for(var i = 0; i < institution.length; i++) {
+
+          if (institution[i].querySelector("input").checked == true) {
+
+            institutionInfo.innerText =
+                'Dla fundacji: "'+ institution[i].querySelector(".description > .title").innerText+'"';
+
+          }
+
+        }
+      }
+    }
+
+    addressInfo(){
+      this.$form.querySelector("#streetInfo").innerText = this.$form.querySelector("#street").value;
+      this.$form.querySelector("#cityInfo").innerText = this.$form.querySelector("#city").value;
+      this.$form.querySelector("#zipCodeInfo").innerText = this.$form.querySelector("#zipCode").value;
+    }
+
+    pickUpInfo(){
+      this.$form.querySelector("#pickUpDateInfo").innerText = this.$form.querySelector("#pickUpDate").value;
+      this.$form.querySelector("#pickUpTimeInfo").innerText = this.$form.querySelector("#pickUpTime").value;
+
+      if(this.$form.querySelector("#pickUpComment").value === ""){
+        this.$form.querySelector("#pickUpCommentInfo").innerText = "Brak uwag";
+      }
+      else{
+        this.$form.querySelector("#pickUpCommentInfo").innerText = this.$form.querySelector("#pickUpComment").value;
+      }
+    }
+
     updateForm() {
       this.$step.innerText = this.currentStep;
 
@@ -162,6 +241,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
+
+      if(this.currentStep==5){
+
+        this.bagsInfo();
+        this.institutionInfo();
+        this.addressInfo();
+        this.pickUpInfo();
+      }
 
       // TODO: get data from inputs and show them in summary
     }

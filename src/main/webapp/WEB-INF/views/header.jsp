@@ -8,7 +8,7 @@
             <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-            <li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj</a></li>
+            <li><form action="/logout" method="post"><button class="btn btn--small btn--without-border">Wyloguj</button><sec:csrfInput/></form></li>
         </sec:authorize>
     </ul>
 

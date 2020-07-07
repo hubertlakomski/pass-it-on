@@ -11,6 +11,7 @@ import pl.hubertlakomski.passiton.service.register.RegisterData;
 import pl.hubertlakomski.passiton.service.register.RegisterService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/register")
@@ -20,11 +21,11 @@ public class RegisterController {
     private final RegisterService registerService;
 
     @GetMapping
-    public String prepareRegisterPage(Model model){
+    public String prepareRegisterPage(Model model, Principal principal){
 
         model.addAttribute("registerData", new RegisterData());
 
-        return "register";
+        return principal == null ? "register" : "redirect:/";
     }
 
     @PostMapping
@@ -37,7 +38,7 @@ public class RegisterController {
 
         registerService.process(data);
 
-        return "index";
+        return "redirect:/login";
     }
 
 }

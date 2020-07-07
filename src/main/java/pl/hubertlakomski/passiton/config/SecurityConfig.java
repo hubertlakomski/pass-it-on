@@ -1,5 +1,6 @@
 package pl.hubertlakomski.passiton.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,20 +16,18 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final DefaultSuccessHandler defaultSuccessHandler;
     private final DataSource dataSource;
-
-    public SecurityConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                    .withUser("admin@admin.pl").password("{noop}pass").roles("USER").and()
+                    .withUser("admin@admin.pl").password("{noop}pass").roles("ADMIN").and()
                 .and()
                     .jdbcAuthentication()
                     .dataSource(dataSource)
@@ -45,14 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                    .antMatchers("/register").permitAll()
-                    .antMatchers("/login").permitAll()
-                    .antMatchers("/").permitAll()
+                    .antMatchers("/register", "/login", "/").permitAll()
+                    .antMatchers("/management").hasAnyRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                         .loginPage("/login")
-                        .defaultSuccessUrl("/donation")
+                        .successHandler(defaultSuccessHandler)
                         .permitAll()
                 .and()
                     .logout()

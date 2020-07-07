@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
-<header class="header--form-page">
+<header>
     <jsp:include page="/WEB-INF/views/header.jsp"/>
 </header>
 

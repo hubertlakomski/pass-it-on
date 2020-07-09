@@ -1,8 +1,8 @@
-package pl.hubertlakomski.passiton.web.controllers.management.institutions;
+package pl.hubertlakomski.passiton.web.controllers.management.institution;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.hubertlakomski.passiton.service.management.institution.AdminInstitutionService;
+import pl.hubertlakomski.passiton.service.management.institution.ManagementInstitutionService;
 import pl.hubertlakomski.passiton.service.management.institution.InstitutionDTO;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/management/institutions")
-public class AdminInstitutionController {
+public class ManagementInstitutionController {
 
-    private final AdminInstitutionService service;
+    private final ManagementInstitutionService service;
 
     @GetMapping
     List<InstitutionDTO> all(){

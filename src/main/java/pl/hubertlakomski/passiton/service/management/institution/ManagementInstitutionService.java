@@ -2,7 +2,7 @@ package pl.hubertlakomski.passiton.service.management.institution;
 
 import java.util.List;
 
-public interface AdminInstitutionService {
+public interface ManagementInstitutionService {
 
     InstitutionDTO get(Long id);
     InstitutionDTO save(InstitutionDTO institution);

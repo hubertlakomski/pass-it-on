@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class DefaultAdminInstitutionService implements  AdminInstitutionService {
+public class DefaultManagementInstitutionService implements ManagementInstitutionService {
 
     private final InstitutionRepository institutionRepository;
     private final ModelMapper modelMapper;

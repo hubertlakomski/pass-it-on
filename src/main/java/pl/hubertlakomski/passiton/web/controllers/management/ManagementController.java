@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/management")
-public class AdminController {
+public class ManagementController {
 
     @GetMapping
     public String prepareAdminPage(){

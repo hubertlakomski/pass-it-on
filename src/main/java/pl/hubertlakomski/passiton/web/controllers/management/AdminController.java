@@ -1,4 +1,4 @@
-package pl.hubertlakomski.passiton.web.controllers;
+package pl.hubertlakomski.passiton.web.controllers.management;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,9 +1,9 @@
-package pl.hubertlakomski.passiton.web.controllers.admin.institutions;
+package pl.hubertlakomski.passiton.web.controllers.management.institutions;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.hubertlakomski.passiton.service.admin.institution.AdminInstitutionService;
-import pl.hubertlakomski.passiton.service.admin.institution.InstitutionDTO;
+import pl.hubertlakomski.passiton.service.management.institution.AdminInstitutionService;
+import pl.hubertlakomski.passiton.service.management.institution.InstitutionDTO;
 
 import java.util.List;
 

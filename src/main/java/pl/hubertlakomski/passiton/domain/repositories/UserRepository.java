@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u INNER JOIN u.roles")
     List<User> findAllWithRoles();
+
+    User findByEmail(String email);
 }

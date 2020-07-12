@@ -1,13 +1,17 @@
 package pl.hubertlakomski.passiton.service.donation;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import pl.hubertlakomski.passiton.domain.models.Category;
 import pl.hubertlakomski.passiton.domain.models.Donation;
 import pl.hubertlakomski.passiton.domain.models.Institution;
+import pl.hubertlakomski.passiton.domain.models.security.User;
 import pl.hubertlakomski.passiton.domain.repositories.CategoryRepository;
 import pl.hubertlakomski.passiton.domain.repositories.DonationRepository;
 import pl.hubertlakomski.passiton.domain.repositories.InstitutionRepository;
+import pl.hubertlakomski.passiton.domain.repositories.UserRepository;
 import pl.hubertlakomski.passiton.service.data.CategoryListData;
 import pl.hubertlakomski.passiton.service.data.InstitutionListData;
 
@@ -21,6 +25,7 @@ public class DefaultDonationService implements DonationService {
     private final CategoryRepository categoryRepository;
     private final InstitutionRepository institutionRepository;
     private final DonationRepository donationRepository;
+    private final UserRepository userRepository;
 
     @Override
     public void saveDonation(DonationData data) {
@@ -36,6 +41,11 @@ public class DefaultDonationService implements DonationService {
         donation.setPickUpComment(data.getPickUpComment());
         donation.setPickUpDate(data.getPickUpDate());
         donation.setPickUpTime(data.getPickUpTime());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepository.findByEmail(authentication.getName());
+
+        donation.setDonatingUser(user);
 
         donationRepository.save(donation);
     }

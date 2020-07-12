@@ -3,6 +3,7 @@ package pl.hubertlakomski.passiton.domain.models;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.hubertlakomski.passiton.domain.models.security.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -19,6 +20,10 @@ public class Donation extends ParentEntity{
 
     @Min(1)
     private Integer quantity; //number of bags
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User donatingUser;
 
     @ManyToMany
     @JoinTable(name="donation_categories")

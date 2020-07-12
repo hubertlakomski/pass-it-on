@@ -2,6 +2,7 @@ package pl.hubertlakomski.passiton.domain.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.hubertlakomski.passiton.domain.models.security.User;
 
@@ -10,6 +11,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,13 @@ public class Donation extends ParentEntity{
 
     @Min(1)
     private Integer quantity; //number of bags
+
+    private boolean isPickedUp = false;
+    private LocalDateTime realPickUpTime; //time of real pickUpTime
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime created;
 
     @OneToOne
     @JoinColumn(name = "user_id")
